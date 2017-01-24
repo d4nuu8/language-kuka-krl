@@ -1,0 +1,26 @@
+{
+    "name": "language-kuka-krl",
+    "displayName": "KUKA KRL",
+    "description": "KUKA KRL (KUKA Robot Language) support in Visual Studio Code",
+    "version": "0.0.1",
+    "publisher": "d4nuu8",
+    "engines": {
+        "vscode": "^1.5.0"
+    },
+    "categories": [
+        "Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "krl",
+            "aliases": ["KRL", "krl"],
+            "extensions": [".src",".dat",".sub"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "krl",
+            "scopeName": "source.krl",
+            "path": "./syntaxes/krl.tmLanguage.json"
+        }]
+    }
+}
