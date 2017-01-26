@@ -1,17 +1,14 @@
 {
 	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"scopeName": "source.krl",
 	"name": "KRL",
+
 	"patterns": [
-		{
-			"include": "#ascii"
-		},
-		{
-			"include": "#comment"
-		},
-		{
-			"include": "#strings"
-		}
+		{ "include": "#ascii" },
+		{ "include": "#comment"	},
+		{ "include": "#string" }
 	],
+
 	"repository": {
 		"ascii": {
 			"patterns": [{
@@ -19,6 +16,7 @@
 				"match": "[^\\x00-\\x7F]"
 			}]
 		},
+
 		"comment": {
 			"patterns": [{
 				"name": "comment.line.character.krl",
@@ -30,17 +28,13 @@
 			}
 			]
 		},
-		"strings": {
-			"name": "string.quoted.double.krl",
-			"begin": "\"",
-			"end": "\"",
-			"patterns": [
-				{
-					"name": "constant.character.escape.krl",
-					"match": "\\\\."
-				}
-			]
+
+		"string": {
+			"patterns": [{
+				"name": "string.quoted.double.krl",
+				"begin": "\"",
+				"end": "\""
+			}]
 		}
-	},
-	"scopeName": "source.krl"
+	}
 }
