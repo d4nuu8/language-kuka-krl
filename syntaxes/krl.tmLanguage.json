@@ -3,18 +3,32 @@
 	"name": "KRL",
 	"patterns": [
 		{
-			"include": "#keywords"
+			"include": "#ascii"
+		},
+		{
+			"include": "#comment"
 		},
 		{
 			"include": "#strings"
 		}
 	],
 	"repository": {
-		"keywords": {
+		"ascii": {
 			"patterns": [{
-				"name": "keyword.control.krl",
-				"match": "\\b(if|while|for|return)\\b"
+				"name": "invalid.illegal.krl",
+				"match": "[^\\x00-\\x7F]"
 			}]
+		},
+		"comment": {
+			"patterns": [{
+				"name": "comment.line.character.krl",
+				"match": ";.*$"
+			},
+			{
+				"name": "comment.line.character.krl",
+				"match": "&.*$"
+			}
+			]
 		},
 		"strings": {
 			"name": "string.quoted.double.krl",
