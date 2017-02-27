@@ -369,9 +369,9 @@
 									"include": "#invalid"
 								}
 							]
-						},
-						"name": "meta.function.krl"
-					}
+						}
+					},
+					"name": "meta.function.krl"
 				}
 			]
 		},
@@ -721,14 +721,14 @@
 		"identifier": {
 			"patterns": [
 				{
-					"match": "^[A-Za-z_$][A-Za-z0-9_$]{0,23}$"
+					"match": "\\b[A-Za-z_$][A-Za-z0-9_$]{0,23}\\b"
 				}
 			]
 		},
 		"identifier.type": {
 			"patterns": [
 				{
-					"match": "^[A-Za-z_$][A-Za-z0-9_$]{0,23}$",
+					"match": "\\b[A-Za-z_$][A-Za-z0-9_$]{0,23}\\b",
 					"name": "storage.type.krl"
 				}
 			]
@@ -736,7 +736,7 @@
 		"identifier.function": {
 			"patterns": [
 				{
-					"match": "^[A-Za-z_$][A-Za-z0-9_$]{0,23}$",
+					"match": "\\b[A-Za-z_$][A-Za-z0-9_$]{0,23}\\b",
 					"name": "entity.name.function.krl"
 				}
 			]
@@ -744,7 +744,7 @@
 		"identifier.variable.enum": {
 			"patterns": [
 				{
-					"match": "^[A-Za-z_$][A-Za-z0-9_$]{0,23}$",
+					"match": "\\b[A-Za-z_$][A-Za-z0-9_$]{0,23}\\b",
 					"name": "variable.enum.krl"
 				}
 			]
@@ -752,7 +752,7 @@
 		"identifier.variable.struc": {
 			"patterns": [
 				{
-					"match": "^[A-Za-z_$][A-Za-z0-9_$]{0,23}$",
+					"match": "\\b[A-Za-z_$][A-Za-z0-9_$]{0,23}\\b",
 					"name": "variable.struc.krl"
 				}
 			]
@@ -760,7 +760,7 @@
 		"identifier.invalid": {
 			"patterns": [
 				{
-					"match": "\\b\\d\\w*|[\\w\\d_$]{25,}",
+					"match": "\\b\\d\\w*|[\\w\\d_$]{25,}\\b",
 					"name": "invalid.illegal.krl"
 				}
 			]
@@ -768,7 +768,7 @@
 		"invalid": {
 			"patterns": [
 				{
-					"match": "^.*$",
+					"match": ".*",
 					"name": "invalid.illegal.krl"
 				}
 			]
