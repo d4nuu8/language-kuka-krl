@@ -4,6 +4,16 @@
     "description": "KUKA KRL (KUKA Robot Language) support in Visual Studio Code",
     "version": "1.0.0",
     "publisher": "d4nuu8",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/d4nuu8/language-kuka-krl/issues",
+        "email": "d4nuu8@gmail.com"
+    },
+    "homepage": "https://github.com/d4nuu8/language-kuka-krl",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/d4nuu8/language-kuka-krl.git"
+    },
     "engines": {
         "vscode": "^1.5.0"
     },
