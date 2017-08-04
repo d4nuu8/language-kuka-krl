@@ -40,9 +40,12 @@
 		"string": {
 			"patterns": [
 				{
-					"begin": "\"",
-					"end": "\"",
+					"match": "\".*\"",
 					"name": "string.quoted.double.krl"
+				},
+				{
+					"match": "\".*\n",
+					"name": "invalid.illegal.krl"
 				}
 			]
 		},

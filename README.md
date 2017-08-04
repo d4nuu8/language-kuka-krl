@@ -6,4 +6,3 @@ KUKA KRL (KUKA Robot Language) support in Visual Studio Code.
 - [ ] Complete implementation of signal matching
 - [ ] Review motion commands
 - [ ] Review triggers
-- [ ] Match strings over multiple lines as invalid
