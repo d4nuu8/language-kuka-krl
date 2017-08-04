@@ -320,6 +320,10 @@
 					"name": "constant.numeric.krl"
 				},
 				{
+					"match": "('B[0-1]+')",
+					"name": "constant.numeric.krl"
+				},
+				{
 					"match": "\\B#[A-Za-z0-9_$]{0,24}\\b",
 					"name": "constant.other.krl"
 				}
