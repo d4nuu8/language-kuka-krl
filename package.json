@@ -42,6 +42,12 @@
                 "scopeName": "source.krl",
                 "path": "./syntaxes/krl.tmLanguage.json"
             }
+        ],
+        "snippets": [
+            {
+                "language": "krl",
+                "path": "./snippets/krl.json"
+            }
         ]
     }
 }

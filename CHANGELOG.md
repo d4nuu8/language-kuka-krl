@@ -1,4 +1,7 @@
 # Change Log
+### 1.2.0
+- Added first few snippets
+
 ### 1.1.0
 - Added highlighting of binary integer values
 - Added highlighting of numerical values in exponential representation
