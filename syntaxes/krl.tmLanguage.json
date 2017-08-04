@@ -725,14 +725,14 @@
 		"identifier": {
 			"patterns": [
 				{
-					"match": "\\b[A-Za-z_$][A-Za-z0-9_$]{0,23}\\b"
+					"match": "[A-Za-z_$][A-Za-z0-9_$]{0,23}"
 				}
 			]
 		},
 		"identifier.type": {
 			"patterns": [
 				{
-					"match": "\\b[A-Za-z_$][A-Za-z0-9_$]{0,23}\\b",
+					"match": "[A-Za-z_$][A-Za-z0-9_$]{0,23}",
 					"name": "storage.type.krl"
 				}
 			]
@@ -740,7 +740,7 @@
 		"identifier.function": {
 			"patterns": [
 				{
-					"match": "\\b[A-Za-z_$][A-Za-z0-9_$]{0,23}\\b",
+					"match": "[A-Za-z_$][A-Za-z0-9_$]{0,23}",
 					"name": "entity.name.function.krl"
 				}
 			]
@@ -748,7 +748,7 @@
 		"identifier.variable.enum": {
 			"patterns": [
 				{
-					"match": "\\b[A-Za-z_$][A-Za-z0-9_$]{0,23}\\b",
+					"match": "[A-Za-z_$][A-Za-z0-9_$]{0,23}",
 					"name": "variable.enum.krl"
 				}
 			]
@@ -756,7 +756,7 @@
 		"identifier.variable.struc": {
 			"patterns": [
 				{
-					"match": "\\b[A-Za-z_$][A-Za-z0-9_$]{0,23}\\b",
+					"match": "[A-Za-z_$][A-Za-z0-9_$]{0,23}",
 					"name": "variable.struc.krl"
 				}
 			]
