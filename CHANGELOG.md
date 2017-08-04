@@ -1,4 +1,10 @@
 # Change Log
+### 1.1.0
+- Added highlighting of binary integer values
+- Added highlighting of numerical values in exponential representation
+- Highlighting of multi line strings as invalid
+- Bug fixes
+
 ### 1.0.1
 - Bug fixes
 
