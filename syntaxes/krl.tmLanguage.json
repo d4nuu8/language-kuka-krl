@@ -1,784 +1,784 @@
 {
-	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-	"scopeName": "source.krl",
-	"name": "KRL",
-	"patterns": [
-		{
-			"include": "#ascii"
-		},
-		{
-			"include": "#comment"
-		},
-		{
-			"include": "#string"
-		},
-		{
-			"include": "#function"
-		}
-	],
-	"repository": {
-		"ascii": {
-			"patterns": [
-				{
-					"match": "[^\\x00-\\x7F]",
-					"name": "invalid.illegal.krl"
-				}
-			]
-		},
-		"comment": {
-			"patterns": [
-				{
-					"match": ";.*$",
-					"name": "comment.line.character.krl"
-				},
-				{
-					"match": "&.*$",
-					"name": "comment.line.character.krl"
-				}
-			]
-		},
-		"string": {
-			"patterns": [
-				{
-					"match": "\".*\"",
-					"name": "string.quoted.double.krl"
-				},
-				{
-					"match": "\".*\n",
-					"name": "invalid.illegal.krl"
-				}
-			]
-		},
-		"function": {
-			"patterns": [
-				{
-					"begin": "(?i)^\\s*(GLOBAL\\s+)?(DEFFCT)\\s+(\\S+)\\s+(\\S+)\\s*\\((.*?)\\)\\s*(.*)$",
-					"beginCaptures": {
-						"1": {
-							"name": "storage.modifier.krl"
-						},
-						"2": {
-							"name": "storage.tpye.function.krl"
-						},
-						"3": {
-							"patterns": [
-								{
-									"include": "#identifier.type"
-								},
-								{
-									"include": "#invalid"
-								}
-							]
-						},
-						"4": {
-							"patterns": [
-								{
-									"include": "#identifier.function"
-								},
-								{
-									"include": "#invalid"
-								}
-							]
-						},
-						"5": {
-							"patterns": [
-								{
-									"include": "#function.parameter"
-								}
-							]
-						},
-						"6": {
-							"patterns": [
-								{
-									"include": "#comment"
-								},
-								{
-									"include": "#invalid"
-								}
-							]
-						}
-					},
-					"end": "(?i)^\\s*(ENDFCT)\\s+(.*)$",
-					"endCaptures": {
-						"1": {
-							"name": "storage.type.function.krl"
-						},
-						"2": {
-							"patterns": [
-								{
-									"include": "#comment"
-								},
-								{
-									"include": "#invalid"
-								}
-							]
-						}
-					},
-					"patterns": [
-						{
-							"include": "#function.body"
-						}
-					],
-					"name": "meta.function.krl"
-				},
-				{
-					"begin": "(?i)^\\s*(GLOBAL\\s+)?(DEF)\\s+(\\S+)\\s*\\((.*?)\\)\\s*(.*)$",
-					"beginCaptures": {
-						"1": {
-							"name": "storage.modifier.krl"
-						},
-						"2": {
-							"patterns": [
-								{
-									"include": "#identifier.type"
-								},
-								{
-									"include": "#invalid"
-								}
-							]
-						},
-						"3": {
-							"patterns": [
-								{
-									"include": "#identifier.function"
-								},
-								{
-									"include": "#invalid"
-								}
-							]
-						},
-						"4": {
-							"patterns": [
-								{
-									"include": "#function.parameter"
-								}
-							]
-						},
-						"5": {
-							"patterns": [
-								{
-									"include": "#comment"
-								},
-								{
-									"include": "#invalid"
-								}
-							]
-						}
-					},
-					"end": "(?i)^\\s*(END)\\s+(.*)$",
-					"endCaptures": {
-						"1": {
-							"name": "storage.type.function.krl"
-						},
-						"2": {
-							"patterns": [
-								{
-									"include": "#comment"
-								},
-								{
-									"include": "#invalid"
-								}
-							]
-						}
-					},
-					"patterns": [
-						{
-							"include": "#function.body"
-						}
-					],
-					"name": "meta.function.krl"
-				},
-				{
-					"begin": "(?i)^\\s*(DEFDAT)\\s+(\\S+)(\\s+(PUBLIC))?\\s*(.*)$",
-					"beginCaptures": {
-						"1": {
-							"name": "storage.tpye.function.krl"
-						},
-						"2": {
-							"patterns": [
-								{
-									"include": "#identifier.function"
-								},
-								{
-									"include": "#invalid"
-								}
-							]
-						},
-						"4": {
-							"name": "storage.modifier.krl"
-						},
-						"5": {
-							"patterns": [
-								{
-									"include": "#comment"
-								},
-								{
-									"include": "#invalid"
-								}
-							]
-						}
-					},
-					"end": "(?i)^\\s*(ENDDAT)(.*)$",
-					"endCaptures": {
-						"1": {
-							"name": "storage.type.function.krl"
-						},
-						"2": {
-							"patterns": [
-								{
-									"include": "#comment"
-								},
-								{
-									"include": "#invalid"
-								}
-							]
-						}
-					},
-					"patterns": [
-						{
-							"include": "#function.body"
-						}
-					],
-					"name": "meta.function.krl"
-				}
-			]
-		},
-		"function.parameter": {
-			"patterns": [
-				{
-					"match": "(?mi)\\s*(\\w+)\\s*:\\s*(IN|OUT)\\s*(,(.*))*?",
-					"captures": {
-						"1": {
-							"patterns": [
-								{
-									"include": "#identifier"
-								},
-								{
-									"include": "#invalid"
-								}
-							]
-						},
-						"2": {
-							"name": "storage.modifier.krl"
-						},
-						"4": {
-							"patterns": [
-								{
-									"include": "#function.paramater"
-								}
-							]
-						}
-					}
-				}
-			]
-		},
-		"function.body": {
-			"patterns": [
-				{
-					"include": "#ascii"
-				},
-				{
-					"include": "#comment"
-				},
-				{
-					"include": "#string"
-				},
-				{
-					"include": "#constant"
-				},
-				{
-					"include": "#function.ext"
-				},
-				{
-					"include": "#storage"
-				},
-				{
-					"include": "#keyword"
-				},
-				{
-					"include": "#function.call"
-				},
-				{
-					"include": "#movement"
-				},
-				{
-					"include": "#interrupt"
-				},
-				{
-					"include": "#trigger"
-				},
-				{
-					"include": "#identifier.invalid"
-				}
-			]
-		},
-		"constant": {
-			"patterns": [
-				{
-					"match": "(?i)\\b(TRUE|FALSE)\\b",
-					"name": "constant.language.krl"
-				},
-				{
-					"match": "\\b([0-9]+(\\.[0-9]+)?)(E[+-]{1}[0-9]+)?\\b",
-					"name": "constant.numeric.krl"
-				},
-				{
-					"match": "('B[0-1]+')",
-					"name": "constant.numeric.krl"
-				},
-				{
-					"match": "\\B#[A-Za-z0-9_$]{0,24}\\b",
-					"name": "constant.other.krl"
-				}
-			]
-		},
-		"function.ext": {
-			"patterns": [
-				{
-					"match": "(?i)^\\s*(EXTFCT)\\s+(\\S+)\\s+(\\S+)\\s*\\((.*?)\\)\\s*(.*)$",
-					"captures": {
-						"1": {
-							"name": "storage.tpye.function.krl"
-						},
-						"2": {
-							"patterns": [
-								{
-									"include": "#identifier.type"
-								},
-								{
-									"include": "#invalid"
-								}
-							]
-						},
-						"3": {
-							"patterns": [
-								{
-									"include": "#identifier.function"
-								},
-								{
-									"include": "#invalid"
-								}
-							]
-						},
-						"4": {
-							"patterns": [
-								{
-									"include": "#function.parameter"
-								}
-							]
-						},
-						"5": {
-							"patterns": [
-								{
-									"include": "#comment"
-								},
-								{
-									"include": "#invalid"
-								}
-							]
-						}
-					},
-					"name": "meta.function.krl"
-				}
-			]
-		},
-		"keyword": {
-			"patterns": [
-				{
-					"match": "(?i)\\b(CONTINUE|EXIT|FOR|TO|STEP|ENDFOR|GOTO|HALT|IF|THEN|ELSE|ENDIF|LOOP|ENDLOOP|REPEAT|UNTIL|SWITCH|CASE|DEFAULT|ENDSWITCH|WAIT|FOR|SEC|WHILE|ENDWHILE|RETURN|BRAKE|RESUME)\\b",
-					"name": "keyword.control.krl"
-				},
-				{
-					"match": "(?i)(\\b(B_)?(AND|OR|EXOR)\\b)|(\\.|,|\\+|-|\\*|\\/|:|(?<!=)={1,2}|<>|<|>|<=|>=|\\(|\\))",
-					"name": "keyword.operator.krl"
-				},
-				{
-					"match": "(?i)\\b(INT|REAL|BOOL|CHAR|AXIS|E6AXIS|FRAME|POS|E6POS|ENUM|STRUC)\\b",
-					"name": "storage.type.krl"
-				},
-				{
-					"match": "(?i)\\b(CONST|GLOBAL|DECL|DEFFCT|EXTFCT|SIGNAL)\\b",
-					"name": "storage.modifier.krl"
-				}
-			]
-		},
-		"storage": {
-			"patterns": [
-				{
-					"match": "(?i)^\\s*(GLOBAL\\s+)?(ENUM)\\s+(\\S+)",
-					"captures": {
-						"1": {
-							"name": "storage.modifier.krl"
-						},
-						"2": {
-							"name": "storage.modifier.krl"
-						},
-						"3": {
-							"patterns": [
-								{
-									"include": "#identifier.variable.enum"
-								},
-								{
-									"include": "#invalid"
-								}
-							]
-						},
-						"4": {
-							"patterns": [
-								{
-									"include": "#enum.definition"
-								}
-							]
-						}
-					}
-				},
-				{
-					"match": "(?i)^\\s*(GLOBAL\\s+)?(STRUC)\\s+(\\S+)",
-					"captures": {
-						"1": {
-							"name": "storage.modifier.krl"
-						},
-						"2": {
-							"name": "storage.modifier.krl"
-						},
-						"3": {
-							"patterns": [
-								{
-									"include": "#identifier.variable.struc"
-								},
-								{
-									"include": "#invalid"
-								}
-							]
-						},
-						"4": {
-							"patterns": [
-								{
-									"include": "#struc.definition"
-								}
-							]
-						}
-					}
-				},
-				{
-					"match": "(?i)^\\s*(DECL GLOBAL|DECL|GLOBAL){1}\\s+(\\S+)",
-					"captures": {
-						"1": {
-							"name": "storage.modifier.krl"
-						},
-						"2": {
-							"patterns": [
-								{
-									"include": "#identifier.type"
-								},
-								{
-									"include": "#invalid"
-								}
-							]
-						}
-					}
-				}
-			]
-		},
-		"function.call": {
-			"patterns": [
-				{
-					"match": "(\\w+)\\s*\\(\\s*(.*?)\\s*\\)",
-					"captures": {
-						"1": {
-							"patterns": [
-								{
-									"include": "#identifier.function"
-								},
-								{
-									"include": "#invalid"
-								}
-							]
-						},
-						"2": {
-							"patterns": [
-								{
-									"include": "#string"
-								},
-								{
-									"include": "#constant"
-								},
-								{
-									"include": "#keyword"
-								},
-								{
-									"include": "#identifier"
-								}
-							]
-						}
-					}
-				}
-			]
-		},
-		"movement": {
-			"patterns": [
-				{
-					"match": "(?i)\\b(PTP|PTP_REL|LIN|LIN_REL|CIRC|CIRC_REL|SPLINE|ENDSPLINE|SPL|SLIN|SCIRC|C_(PTP|VEL|DIS|ORI)|WITH|CA|TIME_BLOCK|START|PART|END)\\b",
-					"name": "storage.modifier.krl"
-				}
-			]
-		},
-		"interrupt": {
-			"patterns": [
-				{
-					"match": "(?i)^\\s*(GLOBAL\\s+)?(INTERRUPT)\\s+(DECL)\\s+(.*?)\\s+(WHEN)\\s+(.*?)\\s+(DO)\\s+(.*)",
-					"captures": {
-						"1": {
-							"name": "storage.modifier.krl"
-						},
-						"2": {
-							"name": "storage.type.interrupt.krl"
-						},
-						"3": {
-							"name": "storage.type.interrupt.krl"
-						},
-						"4": {
-							"patterns": [
-								{
-									"include": "#constant"
-								},
-								{
-									"include": "#identifier"
-								},
-								{
-									"include": "#invalid"
-								}
-							]
-						},
-						"5": {
-							"name": "storage.type.interrupt.krl"
-						},
-						"6": {
-							"patterns": [
-								{
-									"include": "#function.body"
-								}
-							]
-						},
-						"7": {
-							"name": "storage.type.interrupt.krl"
-						},
-						"8": {
-							"patterns": [
-								{
-									"include": "#constant"
-								},
-								{
-									"include": "#function.call"
-								},
-								{
-									"include": "#identifier"
-								},
-								{
-									"include": "#invalid"
-								}
-							]
-						}
-					},
-					"name": "meta.interrupt.krl"
-				},
-				{
-					"match": "(?i)^\\s*(INTERRUPT)\\s+(ON|OFF|DISABLE|ENABLE)\\s+(.*)",
-					"captures": {
-						"1": {
-							"name": "storage.type.interrupt.krl"
-						},
-						"2": {
-							"name": "keyword.control.krl"
-						},
-						"3": {
-							"patterns": [
-								{
-									"include": "#constant"
-								},
-								{
-									"include": "#identifier"
-								},
-								{
-									"include": "#invalid"
-								}
-							]
-						}
-					},
-					"name": "meta.interrupt.krl"
-				}
-			]
-		},
-		"trigger": {
-			"patterns": [
-				{
-					"match": "(?i)^\\s*(TRIGGER)\\s+(WHEN)\\s+(DISTANCE)(\\=)(0|1)\\s+(DELAY)(\\=)([-+]?[0-9]*\\.?[0-9])\\s+(DO)(.*)",
-					"captures": {
-						"1": {
-							"name": "storage.type.trigger.krl"
-						},
-						"2": {
-							"name": "storage.type.trigger.krl"
-						},
-						"3": {
-							"name": "keyword.control.krl"
-						},
-						"4": {
-							"name": "keyword.operator.krl"
-						},
-						"5": {
-							"name": "constant.numeric.krl"
-						},
-						"6": {
-							"name": "keyword.control.krl"
-						},
-						"7": {
-							"name": "keyword.operator.krl"
-						},
-						"8": {
-							"name": "constant.numeric.krl"
-						},
-						"9": {
-							"name": "keyword.control.krl"
-						},
-						"10": {
-							"patterns": [
-								{
-									"include": "#trigger.action"
-								}
-							]
-						}
-					},
-					"name": "meta.trigger.krl"
-				},
-				{
-					"match": "(?i)^\\s*(TRIGGER)\\s+(WHEN)\\s+(PATH)(\\=)([-+]?[0-9]*\\.?[0-9])\\s+(DELAY)(\\=)([-+]?[0-9]*\\.?[0-9])\\s+(DO)(.*)",
-					"captures": {
-						"1": {
-							"name": "storage.type.trigger.krl"
-						},
-						"2": {
-							"name": "storage.type.trigger.krl"
-						},
-						"3": {
-							"name": "keyword.control.krl"
-						},
-						"4": {
-							"name": "keyword.operator.krl"
-						},
-						"5": {
-							"name": "constant.numeric.krl"
-						},
-						"6": {
-							"name": "keyword.control.krl"
-						},
-						"7": {
-							"name": "keyword.operator.krl"
-						},
-						"8": {
-							"name": "constant.numeric.krl"
-						},
-						"9": {
-							"name": "keyword.control.krl"
-						},
-						"10": {
-							"patterns": [
-								{
-									"include": "#trigger.action"
-								}
-							]
-						}
-					},
-					"name": "meta.trigger.krl"
-				}
-			]
-		},
-		"trigger.action": {
-			"patterns": [
-				{
-					"match": "(?i)(.*)(PRIO)(\\=)([-+]?[0-9]*\\.?[0-9])(.*)",
-					"captures": {
-						"1": {
-							"patterns": [
-								{
-									"include": "$self"
-								}
-							]
-						},
-						"2": {
-							"name": "keyword.control.krl"
-						},
-						"3": {
-							"name": "keyword.operator.krl"
-						},
-						"4": {
-							"name": "constant.numeric.krl"
-						},
-						"5": {
-							"patterns": [
-								{
-									"include": "#comment"
-								}
-							]
-						}
-					}
-				}
-			]
-		},
-		"identifier": {
-			"patterns": [
-				{
-					"match": "(?=\\b|\\W)[A-Za-z_$][A-Za-z0-9_$]{0,23}"
-				}
-			]
-		},
-		"identifier.type": {
-			"patterns": [
-				{
-					"match": "(?=\\b|\\W)[A-Za-z_$][A-Za-z0-9_$]{0,23}",
-					"name": "storage.type.krl"
-				}
-			]
-		},
-		"identifier.function": {
-			"patterns": [
-				{
-					"match": "(?=\\b|\\W)[A-Za-z_$][A-Za-z0-9_$]{0,23}",
-					"name": "entity.name.function.krl"
-				}
-			]
-		},
-		"identifier.variable.enum": {
-			"patterns": [
-				{
-					"match": "(?=\\b|\\W)[A-Za-z_$][A-Za-z0-9_$]{0,23}",
-					"name": "variable.enum.krl"
-				}
-			]
-		},
-		"identifier.variable.struc": {
-			"patterns": [
-				{
-					"match": "(?=\\b|\\W)[A-Za-z_$][A-Za-z0-9_$]{0,23}",
-					"name": "variable.struc.krl"
-				}
-			]
-		},
-		"identifier.invalid": {
-			"patterns": [
-				{
-					"match": "\\b\\d\\w*|[\\w\\d_$]{25,}\\b",
-					"name": "invalid.illegal.krl"
-				}
-			]
-		},
-		"invalid": {
-			"patterns": [
-				{
-					"match": ".*",
-					"name": "invalid.illegal.krl"
-				}
-			]
-		}
-	}
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "scopeName": "source.krl",
+  "name": "KRL",
+  "patterns": [
+    {
+      "include": "#ascii"
+    },
+    {
+      "include": "#comment"
+    },
+    {
+      "include": "#string"
+    },
+    {
+      "include": "#function"
+    }
+  ],
+  "repository": {
+    "ascii": {
+      "patterns": [
+        {
+          "match": "[^\\x00-\\x7F]",
+          "name": "invalid.illegal.krl"
+        }
+      ]
+    },
+    "comment": {
+      "patterns": [
+        {
+          "match": ";.*$",
+          "name": "comment.line.character.krl"
+        },
+        {
+          "match": "&.*$",
+          "name": "comment.line.character.krl"
+        }
+      ]
+    },
+    "string": {
+      "patterns": [
+        {
+          "match": "\".*\"",
+          "name": "string.quoted.double.krl"
+        },
+        {
+          "match": "\".*\n",
+          "name": "invalid.illegal.krl"
+        }
+      ]
+    },
+    "function": {
+      "patterns": [
+        {
+          "begin": "(?i)^\\s*(GLOBAL\\s+)?(DEFFCT)\\s+(\\S+)\\s+(\\S+)\\s*\\((.*?)\\)\\s*(.*)$",
+          "beginCaptures": {
+            "1": {
+              "name": "storage.modifier.krl"
+            },
+            "2": {
+              "name": "storage.tpye.function.krl"
+            },
+            "3": {
+              "patterns": [
+                {
+                  "include": "#identifier.type"
+                },
+                {
+                  "include": "#invalid"
+                }
+              ]
+            },
+            "4": {
+              "patterns": [
+                {
+                  "include": "#identifier.function"
+                },
+                {
+                  "include": "#invalid"
+                }
+              ]
+            },
+            "5": {
+              "patterns": [
+                {
+                  "include": "#function.parameter"
+                }
+              ]
+            },
+            "6": {
+              "patterns": [
+                {
+                  "include": "#comment"
+                },
+                {
+                  "include": "#invalid"
+                }
+              ]
+            }
+          },
+          "end": "(?i)^\\s*(ENDFCT)\\s+(.*)$",
+          "endCaptures": {
+            "1": {
+              "name": "storage.type.function.krl"
+            },
+            "2": {
+              "patterns": [
+                {
+                  "include": "#comment"
+                },
+                {
+                  "include": "#invalid"
+                }
+              ]
+            }
+          },
+          "patterns": [
+            {
+              "include": "#function.body"
+            }
+          ],
+          "name": "meta.function.krl"
+        },
+        {
+          "begin": "(?i)^\\s*(GLOBAL\\s+)?(DEF)\\s+(\\S+)\\s*\\((.*?)\\)\\s*(.*)$",
+          "beginCaptures": {
+            "1": {
+              "name": "storage.modifier.krl"
+            },
+            "2": {
+              "patterns": [
+                {
+                  "include": "#identifier.type"
+                },
+                {
+                  "include": "#invalid"
+                }
+              ]
+            },
+            "3": {
+              "patterns": [
+                {
+                  "include": "#identifier.function"
+                },
+                {
+                  "include": "#invalid"
+                }
+              ]
+            },
+            "4": {
+              "patterns": [
+                {
+                  "include": "#function.parameter"
+                }
+              ]
+            },
+            "5": {
+              "patterns": [
+                {
+                  "include": "#comment"
+                },
+                {
+                  "include": "#invalid"
+                }
+              ]
+            }
+          },
+          "end": "(?i)^\\s*(END)\\s+(.*)$",
+          "endCaptures": {
+            "1": {
+              "name": "storage.type.function.krl"
+            },
+            "2": {
+              "patterns": [
+                {
+                  "include": "#comment"
+                },
+                {
+                  "include": "#invalid"
+                }
+              ]
+            }
+          },
+          "patterns": [
+            {
+              "include": "#function.body"
+            }
+          ],
+          "name": "meta.function.krl"
+        },
+        {
+          "begin": "(?i)^\\s*(DEFDAT)\\s+(\\S+)(\\s+(PUBLIC))?\\s*(.*)$",
+          "beginCaptures": {
+            "1": {
+              "name": "storage.tpye.function.krl"
+            },
+            "2": {
+              "patterns": [
+                {
+                  "include": "#identifier.function"
+                },
+                {
+                  "include": "#invalid"
+                }
+              ]
+            },
+            "4": {
+              "name": "storage.modifier.krl"
+            },
+            "5": {
+              "patterns": [
+                {
+                  "include": "#comment"
+                },
+                {
+                  "include": "#invalid"
+                }
+              ]
+            }
+          },
+          "end": "(?i)^\\s*(ENDDAT)(.*)$",
+          "endCaptures": {
+            "1": {
+              "name": "storage.type.function.krl"
+            },
+            "2": {
+              "patterns": [
+                {
+                  "include": "#comment"
+                },
+                {
+                  "include": "#invalid"
+                }
+              ]
+            }
+          },
+          "patterns": [
+            {
+              "include": "#function.body"
+            }
+          ],
+          "name": "meta.function.krl"
+        }
+      ]
+    },
+    "function.parameter": {
+      "patterns": [
+        {
+          "match": "(?mi)\\s*(\\w+)\\s*:\\s*(IN|OUT)\\s*(,(.*))*?",
+          "captures": {
+            "1": {
+              "patterns": [
+                {
+                  "include": "#identifier"
+                },
+                {
+                  "include": "#invalid"
+                }
+              ]
+            },
+            "2": {
+              "name": "storage.modifier.krl"
+            },
+            "4": {
+              "patterns": [
+                {
+                  "include": "#function.paramater"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "function.body": {
+      "patterns": [
+        {
+          "include": "#ascii"
+        },
+        {
+          "include": "#comment"
+        },
+        {
+          "include": "#string"
+        },
+        {
+          "include": "#constant"
+        },
+        {
+          "include": "#function.ext"
+        },
+        {
+          "include": "#storage"
+        },
+        {
+          "include": "#keyword"
+        },
+        {
+          "include": "#function.call"
+        },
+        {
+          "include": "#movement"
+        },
+        {
+          "include": "#interrupt"
+        },
+        {
+          "include": "#trigger"
+        },
+        {
+          "include": "#identifier.invalid"
+        }
+      ]
+    },
+    "constant": {
+      "patterns": [
+        {
+          "match": "(?i)\\b(TRUE|FALSE)\\b",
+          "name": "constant.language.krl"
+        },
+        {
+          "match": "\\b([0-9]+(\\.[0-9]+)?)(E[+-]{1}[0-9]+)?\\b",
+          "name": "constant.numeric.krl"
+        },
+        {
+          "match": "('B[0-1]+')",
+          "name": "constant.numeric.krl"
+        },
+        {
+          "match": "\\B#[A-Za-z0-9_$]{0,24}\\b",
+          "name": "constant.other.krl"
+        }
+      ]
+    },
+    "function.ext": {
+      "patterns": [
+        {
+          "match": "(?i)^\\s*(EXTFCT)\\s+(\\S+)\\s+(\\S+)\\s*\\((.*?)\\)\\s*(.*)$",
+          "captures": {
+            "1": {
+              "name": "storage.tpye.function.krl"
+            },
+            "2": {
+              "patterns": [
+                {
+                  "include": "#identifier.type"
+                },
+                {
+                  "include": "#invalid"
+                }
+              ]
+            },
+            "3": {
+              "patterns": [
+                {
+                  "include": "#identifier.function"
+                },
+                {
+                  "include": "#invalid"
+                }
+              ]
+            },
+            "4": {
+              "patterns": [
+                {
+                  "include": "#function.parameter"
+                }
+              ]
+            },
+            "5": {
+              "patterns": [
+                {
+                  "include": "#comment"
+                },
+                {
+                  "include": "#invalid"
+                }
+              ]
+            }
+          },
+          "name": "meta.function.krl"
+        }
+      ]
+    },
+    "keyword": {
+      "patterns": [
+        {
+          "match": "(?i)\\b(CONTINUE|EXIT|FOR|TO|STEP|ENDFOR|GOTO|HALT|IF|THEN|ELSE|ENDIF|LOOP|ENDLOOP|REPEAT|UNTIL|SWITCH|CASE|DEFAULT|ENDSWITCH|WAIT|FOR|SEC|WHILE|ENDWHILE|RETURN|BRAKE|RESUME)\\b",
+          "name": "keyword.control.krl"
+        },
+        {
+          "match": "(?i)(\\b(B_)?(AND|OR|EXOR)\\b)|(\\.|,|\\+|-|\\*|\\/|:|(?<!=)={1,2}|<>|<|>|<=|>=|\\(|\\))",
+          "name": "keyword.operator.krl"
+        },
+        {
+          "match": "(?i)\\b(INT|REAL|BOOL|CHAR|AXIS|E6AXIS|FRAME|POS|E6POS|ENUM|STRUC)\\b",
+          "name": "storage.type.krl"
+        },
+        {
+          "match": "(?i)\\b(CONST|GLOBAL|DECL|DEFFCT|EXTFCT|SIGNAL)\\b",
+          "name": "storage.modifier.krl"
+        }
+      ]
+    },
+    "storage": {
+      "patterns": [
+        {
+          "match": "(?i)^\\s*(GLOBAL\\s+)?(ENUM)\\s+(\\S+)",
+          "captures": {
+            "1": {
+              "name": "storage.modifier.krl"
+            },
+            "2": {
+              "name": "storage.modifier.krl"
+            },
+            "3": {
+              "patterns": [
+                {
+                  "include": "#identifier.variable.enum"
+                },
+                {
+                  "include": "#invalid"
+                }
+              ]
+            },
+            "4": {
+              "patterns": [
+                {
+                  "include": "#enum.definition"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "match": "(?i)^\\s*(GLOBAL\\s+)?(STRUC)\\s+(\\S+)",
+          "captures": {
+            "1": {
+              "name": "storage.modifier.krl"
+            },
+            "2": {
+              "name": "storage.modifier.krl"
+            },
+            "3": {
+              "patterns": [
+                {
+                  "include": "#identifier.variable.struc"
+                },
+                {
+                  "include": "#invalid"
+                }
+              ]
+            },
+            "4": {
+              "patterns": [
+                {
+                  "include": "#struc.definition"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "match": "(?i)^\\s*(DECL GLOBAL|DECL|GLOBAL){1}\\s+(\\S+)",
+          "captures": {
+            "1": {
+              "name": "storage.modifier.krl"
+            },
+            "2": {
+              "patterns": [
+                {
+                  "include": "#identifier.type"
+                },
+                {
+                  "include": "#invalid"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "function.call": {
+      "patterns": [
+        {
+          "match": "(\\w+)\\s*\\(\\s*(.*?)\\s*\\)",
+          "captures": {
+            "1": {
+              "patterns": [
+                {
+                  "include": "#identifier.function"
+                },
+                {
+                  "include": "#invalid"
+                }
+              ]
+            },
+            "2": {
+              "patterns": [
+                {
+                  "include": "#string"
+                },
+                {
+                  "include": "#constant"
+                },
+                {
+                  "include": "#keyword"
+                },
+                {
+                  "include": "#identifier"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "movement": {
+      "patterns": [
+        {
+          "match": "(?i)\\b(PTP|PTP_REL|LIN|LIN_REL|CIRC|CIRC_REL|SPLINE|ENDSPLINE|SPL|SLIN|SCIRC|C_(PTP|VEL|DIS|ORI)|WITH|CA|TIME_BLOCK|START|PART|END)\\b",
+          "name": "storage.modifier.krl"
+        }
+      ]
+    },
+    "interrupt": {
+      "patterns": [
+        {
+          "match": "(?i)^\\s*(GLOBAL\\s+)?(INTERRUPT)\\s+(DECL)\\s+(.*?)\\s+(WHEN)\\s+(.*?)\\s+(DO)\\s+(.*)",
+          "captures": {
+            "1": {
+              "name": "storage.modifier.krl"
+            },
+            "2": {
+              "name": "storage.type.interrupt.krl"
+            },
+            "3": {
+              "name": "storage.type.interrupt.krl"
+            },
+            "4": {
+              "patterns": [
+                {
+                  "include": "#constant"
+                },
+                {
+                  "include": "#identifier"
+                },
+                {
+                  "include": "#invalid"
+                }
+              ]
+            },
+            "5": {
+              "name": "storage.type.interrupt.krl"
+            },
+            "6": {
+              "patterns": [
+                {
+                  "include": "#function.body"
+                }
+              ]
+            },
+            "7": {
+              "name": "storage.type.interrupt.krl"
+            },
+            "8": {
+              "patterns": [
+                {
+                  "include": "#constant"
+                },
+                {
+                  "include": "#function.call"
+                },
+                {
+                  "include": "#identifier"
+                },
+                {
+                  "include": "#invalid"
+                }
+              ]
+            }
+          },
+          "name": "meta.interrupt.krl"
+        },
+        {
+          "match": "(?i)^\\s*(INTERRUPT)\\s+(ON|OFF|DISABLE|ENABLE)\\s+(.*)",
+          "captures": {
+            "1": {
+              "name": "storage.type.interrupt.krl"
+            },
+            "2": {
+              "name": "keyword.control.krl"
+            },
+            "3": {
+              "patterns": [
+                {
+                  "include": "#constant"
+                },
+                {
+                  "include": "#identifier"
+                },
+                {
+                  "include": "#invalid"
+                }
+              ]
+            }
+          },
+          "name": "meta.interrupt.krl"
+        }
+      ]
+    },
+    "trigger": {
+      "patterns": [
+        {
+          "match": "(?i)^\\s*(TRIGGER)\\s+(WHEN)\\s+(DISTANCE)(\\=)(0|1)\\s+(DELAY)(\\=)([-+]?[0-9]*\\.?[0-9])\\s+(DO)(.*)",
+          "captures": {
+            "1": {
+              "name": "storage.type.trigger.krl"
+            },
+            "2": {
+              "name": "storage.type.trigger.krl"
+            },
+            "3": {
+              "name": "keyword.control.krl"
+            },
+            "4": {
+              "name": "keyword.operator.krl"
+            },
+            "5": {
+              "name": "constant.numeric.krl"
+            },
+            "6": {
+              "name": "keyword.control.krl"
+            },
+            "7": {
+              "name": "keyword.operator.krl"
+            },
+            "8": {
+              "name": "constant.numeric.krl"
+            },
+            "9": {
+              "name": "keyword.control.krl"
+            },
+            "10": {
+              "patterns": [
+                {
+                  "include": "#trigger.action"
+                }
+              ]
+            }
+          },
+          "name": "meta.trigger.krl"
+        },
+        {
+          "match": "(?i)^\\s*(TRIGGER)\\s+(WHEN)\\s+(PATH)(\\=)([-+]?[0-9]*\\.?[0-9])\\s+(DELAY)(\\=)([-+]?[0-9]*\\.?[0-9])\\s+(DO)(.*)",
+          "captures": {
+            "1": {
+              "name": "storage.type.trigger.krl"
+            },
+            "2": {
+              "name": "storage.type.trigger.krl"
+            },
+            "3": {
+              "name": "keyword.control.krl"
+            },
+            "4": {
+              "name": "keyword.operator.krl"
+            },
+            "5": {
+              "name": "constant.numeric.krl"
+            },
+            "6": {
+              "name": "keyword.control.krl"
+            },
+            "7": {
+              "name": "keyword.operator.krl"
+            },
+            "8": {
+              "name": "constant.numeric.krl"
+            },
+            "9": {
+              "name": "keyword.control.krl"
+            },
+            "10": {
+              "patterns": [
+                {
+                  "include": "#trigger.action"
+                }
+              ]
+            }
+          },
+          "name": "meta.trigger.krl"
+        }
+      ]
+    },
+    "trigger.action": {
+      "patterns": [
+        {
+          "match": "(?i)(.*)(PRIO)(\\=)([-+]?[0-9]*\\.?[0-9])(.*)",
+          "captures": {
+            "1": {
+              "patterns": [
+                {
+                  "include": "$self"
+                }
+              ]
+            },
+            "2": {
+              "name": "keyword.control.krl"
+            },
+            "3": {
+              "name": "keyword.operator.krl"
+            },
+            "4": {
+              "name": "constant.numeric.krl"
+            },
+            "5": {
+              "patterns": [
+                {
+                  "include": "#comment"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "identifier": {
+      "patterns": [
+        {
+          "match": "(?=\\b|\\W)[A-Za-z_$][A-Za-z0-9_$]{0,23}"
+        }
+      ]
+    },
+    "identifier.type": {
+      "patterns": [
+        {
+          "match": "(?=\\b|\\W)[A-Za-z_$][A-Za-z0-9_$]{0,23}",
+          "name": "storage.type.krl"
+        }
+      ]
+    },
+    "identifier.function": {
+      "patterns": [
+        {
+          "match": "(?=\\b|\\W)[A-Za-z_$][A-Za-z0-9_$]{0,23}",
+          "name": "entity.name.function.krl"
+        }
+      ]
+    },
+    "identifier.variable.enum": {
+      "patterns": [
+        {
+          "match": "(?=\\b|\\W)[A-Za-z_$][A-Za-z0-9_$]{0,23}",
+          "name": "variable.enum.krl"
+        }
+      ]
+    },
+    "identifier.variable.struc": {
+      "patterns": [
+        {
+          "match": "(?=\\b|\\W)[A-Za-z_$][A-Za-z0-9_$]{0,23}",
+          "name": "variable.struc.krl"
+        }
+      ]
+    },
+    "identifier.invalid": {
+      "patterns": [
+        {
+          "match": "\\b\\d\\w*|[\\w\\d_$]{25,}\\b",
+          "name": "invalid.illegal.krl"
+        }
+      ]
+    },
+    "invalid": {
+      "patterns": [
+        {
+          "match": ".*",
+          "name": "invalid.illegal.krl"
+        }
+      ]
+    }
+  }
 }
