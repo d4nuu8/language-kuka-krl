@@ -1,13 +1,19 @@
 # Change Log
+## 1.5.0
+- Add auto indentation support
+
+## 1.4.0
+- Bug fixes
+
 ## 1.3.0
 - Add folding markers
 
 ## 1.2.0
-- Added first few snippets
+- Add first few snippets
 
 ## 1.1.0
-- Added highlighting of binary integer values
-- Added highlighting of numerical values in exponential representation
+- Add highlighting of binary integer values
+- Add highlighting of numerical values in exponential representation
 - Highlighting of multi line strings as invalid
 - Bug fixes
 
