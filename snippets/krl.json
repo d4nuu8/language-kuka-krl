@@ -26,6 +26,15 @@
         ],
         "description": "For loop"
     },
+    "While loop": {
+        "prefix": "while",
+        "body": [
+            "WHILE (${1:condition})",
+            "\t$0",
+            "ENDWHILE"
+        ],
+        "description": "While loop"
+    },
     "If statement": {
         "prefix": "if",
         "body": [
