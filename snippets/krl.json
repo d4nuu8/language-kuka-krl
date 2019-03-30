@@ -3,7 +3,7 @@
         "prefix": "module",
         "body": [
             "${1:GLOBAL }DEF ${2:name}(${3:params})",
-            "$0",
+            "\t$0",
             "END"
         ],
         "description": "Module"
@@ -12,7 +12,7 @@
         "prefix": "function",
         "body": [
             "${1:GLOBAL }DEFFCT ${2:type} ${3:name}(${4:params})",
-            "$0",
+            "\t$0",
             "ENDFCT"
         ],
         "description": "Function"
@@ -21,7 +21,7 @@
         "prefix": "for",
         "body": [
             "FOR ${1:counter}=${2:start} TO ${3:end}${4: STEP step}",
-            "$0",
+            "\t$0",
             "ENDFOR"
         ],
         "description": "For loop"
@@ -30,7 +30,7 @@
         "prefix": "if",
         "body": [
             "IF (${1:condition}) THEN",
-            "$0",
+            "\t$0",
             "ENDIF"
         ],
         "description": "If statement"
@@ -40,7 +40,7 @@
         "body": [
             "SWITCH (${1:variable})",
             "CASE ${2:switch}",
-            "  $0",
+            "\t$0",
             "DEFAULT",
             "ENDSWITCH"
         ],
