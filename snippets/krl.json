@@ -84,5 +84,40 @@
             "TRIGGER WHEN PATH=${1:distance} ${2:ONSTART} DELAY=${3:delay} DO ${4:event}${5: PRIO=-1}"
         ],
         "description": "Trigger when path"
+    },
+    "E6AXIS": {
+        "prefix": "E6AXIS value",
+        "body": [
+            "{A1 ${1:value}, A2 ${2:value}, A3 ${3:value}, A4 ${4:value}, A5 ${5:value}, A6 ${6:value}, E1 ${7:value}, E2 ${8:value}, E3 ${9:value}, E4 ${10:value}, E5 ${11:value}, E6 ${12:value}}"
+        ],
+        "description": "E6AXIS value assignment"
+    },
+    "AXIS": {
+        "prefix": "AXIS value",
+        "body": [
+            "{A1 ${1:value}, A2 ${2:value}, A3 ${3:value}, A4 ${4:value}, A5 ${5:value}, A6 ${6:value}}"
+        ],
+        "description": "AXIS value assignment"
+    },
+    "E6POS": {
+        "prefix": "E6POS value",
+        "body": [
+            "{X ${1:value}, Y ${2:value}, Z ${3:value}, A ${4:value}, B ${5:value}, C ${6:value}, E1 ${7:value}, E2 ${8:value}, E3 ${9:value}, E4 ${10:value}, E5 ${11:value}, E6 ${12:value}, S ${13:value}, T ${14:value}}"
+        ],
+        "description": "E6POS value assignment"
+    },
+    "POS": {
+        "prefix": "POS value",
+        "body": [
+            "{X ${1:value}, Y ${2:value}, Z ${3:value}, A ${4:value}, B ${5:value}, C ${6:value}, S ${7:value}, T ${8:value}}"
+        ],
+        "description": "POS value assignment"
+    },
+    "FRAME": {
+        "prefix": "FRAME value",
+        "body": [
+            "{X ${1:value}, Y ${2:value}, Z ${3:value}, A ${4:value}, B ${5:value}, C ${6:value}}"
+        ],
+        "description": "FRAME value assignment"
     }
 }
