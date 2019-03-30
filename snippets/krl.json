@@ -26,6 +26,15 @@
         ],
         "description": "For loop"
     },
+    "Loop": {
+        "prefix": "loop",
+        "body": [
+            "LOOP",
+            "\t$0",
+            "ENDLOOP"
+        ],
+        "description": "Loop"
+    },
     "While loop": {
         "prefix": "while",
         "body": [
