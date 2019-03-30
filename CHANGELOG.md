@@ -1,4 +1,7 @@
 # Change Log
+## 1.6.0
+- Add new snippets and update existing ones
+
 ## 1.5.0
 - Add auto indentation support
 
