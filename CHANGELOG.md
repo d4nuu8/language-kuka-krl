@@ -1,5 +1,5 @@
 # Change Log
-## 1.7.0
+## 1.8.1
 - Add asynchronous commands
 
 ## 1.6.0
