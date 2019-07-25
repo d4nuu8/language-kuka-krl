@@ -521,7 +521,7 @@
     "movement": {
       "patterns": [
         {
-          "match": "(?i)\\b(PTP|PTP_REL|LIN|LIN_REL|CIRC|CIRC_REL|SPLINE|ENDSPLINE|SPL|SLIN|SCIRC|C_(PTP|VEL|DIS|ORI)|WITH|CA|TIME_BLOCK|START|PART|END)\\b",
+          "match": "(?i)\\b(PTP|PTP_REL|LIN|LIN_REL|CIRC|CIRC_REL|ASYPTP|ASYSTOP|ASYCONT|ASYCANCEL|SPLINE|ENDSPLINE|SPL|SLIN|SCIRC|C_(PTP|VEL|DIS|ORI)|WITH|CA|TIME_BLOCK|START|PART|END)\\b",
           "name": "storage.modifier.krl"
         }
       ]
