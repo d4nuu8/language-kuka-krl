@@ -1,4 +1,7 @@
 # Change Log
+## 1.7.0
+- Add asynchronous commands
+
 ## 1.6.0
 - Add new snippets and update existing ones
 
