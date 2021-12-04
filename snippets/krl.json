@@ -119,5 +119,12 @@
             "{X ${1:value}, Y ${2:value}, Z ${3:value}, A ${4:value}, B ${5:value}, C ${6:value}}"
         ],
         "description": "FRAME value assignment"
+    },
+    "PULSE": {
+        "prefix": "PULSE",
+        "body": [
+            "PULSE(${1:signal}, ${2|TRUE,FALSE|}, ${3:duration})"
+        ],
+        "description": "Pulse statement"
     }
 }

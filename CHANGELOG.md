@@ -4,6 +4,7 @@
 
 - Update required VS Code engine
 - Update license and contact information
+- Add PULSE snippet
 
 ## 1.8.1
 
