@@ -1,24 +1,24 @@
 {
     "Module": {
-        "prefix": "module",
+        "prefix": ["DEF", "module"],
         "body": [
             "${1:GLOBAL }DEF ${2:name}(${3:params})",
             "\t$0",
             "END"
         ],
-        "description": "Module"
+        "description": "Module definition"
     },
     "Function": {
-        "prefix": "function",
+        "prefix": ["DEFFCT", "function"],
         "body": [
             "${1:GLOBAL }DEFFCT ${2:type} ${3:name}(${4:params})",
             "\t$0",
             "ENDFCT"
         ],
-        "description": "Function"
+        "description": "Function definition"
     },
     "For loop": {
-        "prefix": "for",
+        "prefix": "FOR",
         "body": [
             "FOR ${1:counter}=${2:start} TO ${3:end}${4: STEP step}",
             "\t$0",
@@ -27,7 +27,7 @@
         "description": "For loop"
     },
     "Loop": {
-        "prefix": "loop",
+        "prefix": "LOOP",
         "body": [
             "LOOP",
             "\t$0",
@@ -36,7 +36,7 @@
         "description": "Loop"
     },
     "While loop": {
-        "prefix": "while",
+        "prefix": "WHILE",
         "body": [
             "WHILE (${1:condition})",
             "\t$0",
@@ -45,7 +45,7 @@
         "description": "While loop"
     },
     "If statement": {
-        "prefix": "if",
+        "prefix": "IF",
         "body": [
             "IF (${1:condition}) THEN",
             "\t$0",
@@ -54,7 +54,7 @@
         "description": "If statement"
     },
     "Switch statement": {
-        "prefix": "switch",
+        "prefix": "SWITCH",
         "body": [
             "SWITCH (${1:variable})",
             "CASE ${2:switch}",
@@ -65,21 +65,21 @@
         "description": "Switch statement"
     },
     "Interrupt declaration": {
-        "prefix": "interrupt",
+        "prefix": "INTERRUPT",
         "body": [
             "${1:GLOBAL }INTERRUPT DECL ${2:priority} WHEN ${3:trigger} DO ${4:event}"
         ],
         "description": "Interrupt declaration"
     },
     "Trigger when distance": {
-        "prefix": "trigger when distance",
+        "prefix": "TRIGGER WHEN DISTANCE",
         "body": [
             "TRIGGER WHEN DISTANCE=${1:position} DELAY=${2:delay} DO ${3:event}${4: PRIO=-1}"
         ],
         "description": "Trigger when distance"
     },
     "Trigger when path": {
-        "prefix": "trigger when path",
+        "prefix": "TRIGGER WHEN PATH",
         "body": [
             "TRIGGER WHEN PATH=${1:distance} ${2:ONSTART} DELAY=${3:delay} DO ${4:event}${5: PRIO=-1}"
         ],
