@@ -2,7 +2,7 @@
     "name": "language-kuka-krl",
     "displayName": "KUKA KRL",
     "description": "KUKA KRL (KUKA Robot Language) support in Visual Studio Code",
-    "version": "1.9.0",
+    "version": "1.10.0",
     "publisher": "d4nuu8",
     "license": "MIT",
     "bugs": {
@@ -37,7 +37,11 @@
                     ".dat",
                     ".sub"
                 ],
-                "configuration": "./language-configuration.json"
+                "configuration": "./language-configuration.json",
+                "icon": {
+                    "light": "./icons/krl-light.svg",
+                    "dark": "./icons/krl-dark.svg"
+                }
             }
         ],
         "grammars": [

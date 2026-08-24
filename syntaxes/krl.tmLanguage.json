@@ -40,7 +40,7 @@
     "string": {
       "patterns": [
         {
-          "match": "\".*\"",
+          "match": "\"[^\"]*\"",
           "name": "string.quoted.double.krl"
         },
         {
@@ -58,7 +58,7 @@
               "name": "storage.modifier.krl"
             },
             "2": {
-              "name": "storage.tpye.function.krl"
+              "name": "storage.type.function.krl"
             },
             "3": {
               "patterns": [
@@ -192,7 +192,7 @@
           "begin": "(?i)^\\s*(DEFDAT)\\s+(\\S+)(\\s+(PUBLIC))?\\s*(.*)$",
           "beginCaptures": {
             "1": {
-              "name": "storage.tpye.function.krl"
+              "name": "storage.type.function.krl"
             },
             "2": {
               "patterns": [
@@ -246,7 +246,7 @@
     "function.parameter": {
       "patterns": [
         {
-          "match": "(?mi)\\s*(\\w+)\\s*:\\s*(IN|OUT)\\s*(,(.*))*?",
+          "match": "(?mi)\\s*([\\w\\[\\]]+)\\s*:\\s*(IN|OUT)\\s*(,(.*))*?",
           "captures": {
             "1": {
               "patterns": [
@@ -264,7 +264,7 @@
             "4": {
               "patterns": [
                 {
-                  "include": "#function.paramater"
+                  "include": "#function.parameter"
                 }
               ]
             }
@@ -338,7 +338,7 @@
           "match": "(?i)^\\s*(EXTFCT)\\s+(\\S+)\\s+(\\S+)\\s*\\((.*?)\\)\\s*(.*)$",
           "captures": {
             "1": {
-              "name": "storage.tpye.function.krl"
+              "name": "storage.type.function.krl"
             },
             "2": {
               "patterns": [
@@ -389,7 +389,7 @@
           "name": "keyword.control.krl"
         },
         {
-          "match": "(?i)(\\b(B_)?(AND|OR|EXOR)\\b)|(\\.|,|\\+|-|\\*|\\/|:|(?<!=)={1,2}|<>|<|>|<=|>=|\\(|\\))",
+          "match": "(?i)(\\b(B_)?(AND|OR|EXOR|NOT)\\b)|(\\.|,|\\+|-|\\*|\\/|:|(?<!=)={1,2}|<>|<|>|<=|>=|\\(|\\))",
           "name": "keyword.operator.krl"
         },
         {
@@ -405,7 +405,7 @@
     "storage": {
       "patterns": [
         {
-          "match": "(?i)^\\s*(GLOBAL\\s+)?(ENUM)\\s+(\\S+)",
+          "match": "(?i)^\\s*(GLOBAL\\s+)?(ENUM)\\s+(\\S+)(\\s+.*)?$",
           "captures": {
             "1": {
               "name": "storage.modifier.krl"
@@ -433,7 +433,7 @@
           }
         },
         {
-          "match": "(?i)^\\s*(GLOBAL\\s+)?(STRUC)\\s+(\\S+)",
+          "match": "(?i)^\\s*(GLOBAL\\s+)?(STRUC)\\s+(\\S+)(\\s+.*)?$",
           "captures": {
             "1": {
               "name": "storage.modifier.krl"
@@ -461,7 +461,7 @@
           }
         },
         {
-          "match": "(?i)^\\s*(DECL GLOBAL|DECL|GLOBAL){1}\\s+(\\S+)",
+          "match": "(?i)^\\s*(DECL GLOBAL|DECL|GLOBAL){1}(?!\\s+INTERRUPT)\\s+(\\S+)",
           "captures": {
             "1": {
               "name": "storage.modifier.krl"
@@ -529,7 +529,7 @@
     "interrupt": {
       "patterns": [
         {
-          "match": "(?i)^\\s*(GLOBAL\\s+)?(INTERRUPT)\\s+(DECL)\\s+(.*?)\\s+(WHEN)\\s+(.*?)\\s+(DO)\\s+(.*)",
+          "match": "(?i)^\\s*(GLOBAL\\s+)?(INTERRUPT)\\s+(DECL)\\s+(.*?)\\s+(WHEN)\\s+(.*?)\\s+(DO)\\s+([^;]*)",
           "captures": {
             "1": {
               "name": "storage.modifier.krl"
@@ -586,7 +586,7 @@
           "name": "meta.interrupt.krl"
         },
         {
-          "match": "(?i)^\\s*(INTERRUPT)\\s+(ON|OFF|DISABLE|ENABLE)\\s+(.*)",
+          "match": "(?i)^\\s*(INTERRUPT)\\s+(ON|OFF|DISABLE|ENABLE)\\s+([^;\\s]+)",
           "captures": {
             "1": {
               "name": "storage.type.interrupt.krl"
@@ -738,7 +738,7 @@
     "identifier.type": {
       "patterns": [
         {
-          "match": "(?=\\b|\\W)[A-Za-z_$][A-Za-z0-9_$]{0,23}",
+          "match": "(?=\\b|\\W)[A-Za-z_$][A-Za-z0-9_$]{0,23}(\\[\\d+\\])?",
           "name": "storage.type.krl"
         }
       ]
@@ -763,6 +763,22 @@
       "patterns": [
         {
           "match": "(?=\\b|\\W)[A-Za-z_$][A-Za-z0-9_$]{0,23}",
+          "name": "variable.struc.krl"
+        }
+      ]
+    },
+    "enum.definition": {
+      "patterns": [
+        {
+          "match": "[A-Za-z_$][A-Za-z0-9_$]{0,23}",
+          "name": "variable.enum.krl"
+        }
+      ]
+    },
+    "struc.definition": {
+      "patterns": [
+        {
+          "match": "[A-Za-z_$][A-Za-z0-9_$]{0,23}",
           "name": "variable.struc.krl"
         }
       ]
